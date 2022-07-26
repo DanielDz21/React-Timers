@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import styles from './App.module.css';
+import TimerForm from './components/TimerForm';
+import Timer from './components/Timer';
 
 function App() {
+  const [timers, setTimers] = useState([
+    { id: 1, name: 'Timer 1', duration: 5},
+    { id: 2, name: 'Timer 2', duration: 10},
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className={styles.main}>
+      <h1 className={styles.title}>Timers</h1>
+      <TimerForm setTimers={setTimers}/>
+
+      <div className={styles.timers}>
+        {timers.map((timer) => (
+          <Timer key={timer.id} {...timer} />
+        ))}
+      </div>
+    </main>
   );
 }
 
