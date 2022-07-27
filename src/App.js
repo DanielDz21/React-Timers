@@ -4,10 +4,11 @@ import TimerForm from './components/TimerForm';
 import Timer from './components/Timer';
 
 function App() {
-  const [timers, setTimers] = useState([
-    { id: 1, name: 'Timer 1', duration: 5},
-    { id: 2, name: 'Timer 2', duration: 10},
-  ]);
+  const [timers, setTimers] = useState([]);
+
+  const deleteTimer = (timerId) => {
+    setTimers(timers.filter(({ id }) => id !== timerId))
+  };
 
   return (
     <main className={styles.main}>
@@ -16,7 +17,7 @@ function App() {
 
       <div className={styles.timers}>
         {timers.map((timer) => (
-          <Timer key={timer.id} {...timer} />
+          <Timer key={timer.id} deleteTimer={deleteTimer} {...timer} />
         ))}
       </div>
     </main>

@@ -7,7 +7,9 @@
 }
 
 .header {
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .initialDuration {
@@ -46,4 +48,9 @@
 .start {
   padding: 0.5rem 0.75rem;
   background-color: forestgreen;
+}
+
+.delete {
+  padding: 0.25rem 0.5rem;
+  background-color: crimson;
 }
